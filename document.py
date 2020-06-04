@@ -8,8 +8,8 @@ from enum import Enum
 
 
 class Document:
-    """The Document class is the top-level class having access to all objects within
-    the document.
+    """The Document class is the top-level class having access to all objects
+    within the document.
 
     """
 
@@ -33,7 +33,6 @@ class Document:
         pass
 
 
-
 class section:
     """ An abstract class inherited by all the headers"""
     id = 0
@@ -46,11 +45,13 @@ class section:
         id += 1
 
     def getSubsections(self):
-        """Returns a list of header-objects all located within the current heading"""
+        """Returns a list of header-objects all located within the current
+        heading"""
         return self.sections
 
     def getParagraphs(self):
-        """Returns a list of all paragraph-objects located within the current heading"""
+        """Returns a list of all paragraph-objects located within the current
+        heading"""
         return self.elements
 
     def addParagraph(self, paragraph_type, text):
@@ -63,6 +64,7 @@ class section:
 
     def generateAsciidoc():
         pass
+
 
 class Header1(section):
     """Level 1 heading, corresponds to \"==\"."""
@@ -93,6 +95,7 @@ class Header3(section):
         self.sections.append(header)
         return header
 
+
 class Header4(section):
     """Level 3 heading, corresponds to \"=====\"."""
     pass
@@ -109,8 +112,9 @@ class Paragraph(Enum):
     CAUTION = 5
     CODE = 6
 
+    def __init__(self, text, paragraph_type=None, optional_title=None,
+                 code_language=None):
 
-    def __init__(self, text, paragraph_type=None, optional_title=None, code_language=None):
         """The constructor."""
         self.optional_title = optional_title
         self.text = text
@@ -136,4 +140,3 @@ class Paragraph(Enum):
             output += "CAUTION: "
 
         output += text
-
